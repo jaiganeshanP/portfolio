@@ -1,0 +1,99 @@
+.navbar {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  padding:1.25rem 2rem;
+  -webkit-transition:all var(--transition-smooth);
+  transition:all var(--transition-smooth);
+}
+.navbar.scrolled {
+  background:var(--bg-glass);
+  -webkit-backdrop-filter:var(--blur-glass);
+  backdrop-filter:var(--blur-glass);
+  border-bottom:1px solid var(--border-subtle);
+  padding:.875rem 2rem;
+  box-shadow:0 4px 24px rgba(0,0,0,0.2);
+}
+.inner {
+  max-width:1200px; margin:0 auto;
+  display:-webkit-box; display:-ms-flexbox; display:flex;
+  -webkit-box-align:center; -ms-flex-align:center; align-items:center;
+  -webkit-box-pack:justify; -ms-flex-pack:justify; justify-content:space-between;
+  gap:2rem;
+}
+.logo {
+  display:-webkit-box; display:-ms-flexbox; display:flex;
+  -webkit-box-align:center; -ms-flex-align:center; align-items:center;
+  gap:.625rem; background:none; cursor:pointer; border:none;
+}
+.logoMark {
+  width:36px; height:36px;
+  background:-webkit-linear-gradient(135deg,var(--accent-primary),var(--accent-purple));
+  background:linear-gradient(135deg,var(--accent-primary),var(--accent-purple));
+  border-radius:var(--radius-sm);
+  display:-webkit-box; display:-ms-flexbox; display:flex;
+  -webkit-box-align:center; -ms-flex-align:center; align-items:center;
+  -webkit-box-pack:center; -ms-flex-pack:center; justify-content:center;
+  font-family:var(--font-display); font-weight:700; font-size:.8rem;
+  color:white; letter-spacing:.05em; -ms-flex-negative:0; flex-shrink:0;
+}
+.logoText { font-family:var(--font-display); font-weight:600; font-size:.95rem; color:var(--text-primary); letter-spacing:-.01em; }
+.links {
+  display:-webkit-box; display:-ms-flexbox; display:flex;
+  -webkit-box-align:center; -ms-flex-align:center; align-items:center;
+  gap:.25rem;
+}
+.link {
+  background:none; border:none; font-size:.875rem; font-weight:500;
+  color:var(--text-secondary); padding:.5rem .875rem; border-radius:var(--radius-sm);
+  cursor:pointer;
+  -webkit-transition:all var(--transition-fast);
+  transition:all var(--transition-fast);
+}
+.link:hover { color:var(--text-primary); background:var(--bg-card); }
+.link.active { color:var(--accent-primary); background:rgba(59,130,246,0.1); }
+.actions {
+  display:-webkit-box; display:-ms-flexbox; display:flex;
+  -webkit-box-align:center; -ms-flex-align:center; align-items:center;
+  gap:.5rem;
+}
+.themeBtn {
+  width:38px; height:38px; border-radius:var(--radius-sm);
+  background:var(--bg-card); border:1px solid var(--border-subtle);
+  color:var(--text-secondary);
+  display:-webkit-box; display:-ms-flexbox; display:flex;
+  -webkit-box-align:center; -ms-flex-align:center; align-items:center;
+  -webkit-box-pack:center; -ms-flex-pack:center; justify-content:center;
+  cursor:pointer;
+  -webkit-transition:all var(--transition-fast);
+  transition:all var(--transition-fast);
+}
+.themeBtn:hover { color:var(--accent-primary); border-color:var(--border-accent); }
+.menuBtn {
+  display:none; width:38px; height:38px; border-radius:var(--radius-sm);
+  background:var(--bg-card); border:1px solid var(--border-subtle);
+  color:var(--text-primary);
+  -webkit-box-align:center; -ms-flex-align:center; align-items:center;
+  -webkit-box-pack:center; -ms-flex-pack:center; justify-content:center;
+  cursor:pointer;
+}
+.mobileMenu {
+  background:var(--bg-glass);
+  -webkit-backdrop-filter:var(--blur-glass);
+  backdrop-filter:var(--blur-glass);
+  border-top:1px solid var(--border-subtle); overflow:hidden; padding:0 1rem;
+}
+.mobileLink {
+  display:block; width:100%; text-align:left; background:none; border:none;
+  border-bottom:1px solid var(--border-subtle);
+  font-size:.95rem; font-weight:500; color:var(--text-secondary);
+  padding:.875rem .5rem; cursor:pointer;
+  -webkit-transition:color var(--transition-fast);
+  transition:color var(--transition-fast);
+}
+.mobileLink:last-child { border-bottom:none; }
+.mobileLink:hover,.mobileLink.active { color:var(--accent-primary); }
+@media (max-width:768px) {
+  .navbar  { padding:1rem 1.25rem; }
+  .links   { display:none; }
+  .menuBtn { display:-webkit-box; display:-ms-flexbox; display:flex; }
+  .logoText { display:none; }
+}

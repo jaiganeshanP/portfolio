@@ -1,0 +1,93 @@
+/*
+ * Cross-browser compatibility patches
+ * Applied globally after component styles
+ */
+
+/* ── gap in flex containers — older Safari/iOS fallback ── */
+/* For browsers that support flex but not gap, we use margin instead */
+@supports not (gap: 1rem) {
+  /* Navbar links */
+  .links > * + * { margin-left: 0.25rem; }
+  /* CTA buttons */
+  .cta > * + *   { margin-left: 0.875rem; }
+}
+
+/* ── Gradient text Firefox fallback ── */
+/* Firefox supports background-clip:text but not -webkit-text-fill-color */
+@-moz-document url-prefix() {
+  .nameGrad, .highlight, .statVal {
+    -webkit-text-fill-color: unset !important;
+    background: none !important;
+    color: var(--accent-primary) !important;
+  }
+}
+
+/* ── backdrop-filter fallback for browsers without support ── */
+/* Chrome 76+, Safari 9+, Edge 17+, Firefox 103+ support it */
+/* For older Firefox — use a solid semi-transparent bg */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-card {
+    background: var(--bg-secondary) !important;
+  }
+}
+
+/* ── Smooth scroll — not supported on all browsers natively ── */
+/* JS-based smooth scroll from Framer Motion handles this anyway */
+
+/* ── Input appearance reset for iOS Safari ── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+textarea,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* ── Button focus outline — accessibility across all browsers ── */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* iOS Safari tap highlight removal */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── iOS Safari 100vh fix ── */
+/* Viewport height on mobile Safari includes browser chrome */
+.hero {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+/* ── Prevent text size adjustment on orientation change (iOS) ── */
+body {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* ── Fix for Chrome/Edge hover flicker on transformed elements ── */
+.glass-card,
+.socialBtn,
+.btnPrimary,
+.addBtn {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+/* ── Firefox scrollbar styling (width only — colors set in globals) ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) var(--bg-primary);
+}
